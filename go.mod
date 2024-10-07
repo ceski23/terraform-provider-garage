@@ -3,7 +3,7 @@ module terraform-provider-garage
 go 1.19
 
 require (
-	git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20221113145120-d012cff7c554
+	git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20231128153612-8b81fae65e5e
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
 	github.com/thoas/go-funk v0.9.3
 )

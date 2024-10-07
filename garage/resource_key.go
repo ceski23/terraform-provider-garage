@@ -95,7 +95,7 @@ func resourceKeyCreate(ctx context.Context, d *schema.ResourceData, m interface{
 	var keyInfo *garage.KeyInfo
 
 	if accessKeyID != "" || secretAccessKey != "" {
-		importKeyRequest := *garage.NewImportKeyRequest(*name, accessKeyID, secretAccessKey)
+		importKeyRequest := *garage.NewImportKeyRequest(*garage.NewNullableString(name), accessKeyID, secretAccessKey)
 		resp, _, err := p.client.KeyApi.ImportKey(updateContext(ctx, p)).ImportKeyRequest(importKeyRequest).Execute()
 		if err != nil {
 			return diag.FromErr(err)
@@ -103,7 +103,7 @@ func resourceKeyCreate(ctx context.Context, d *schema.ResourceData, m interface{
 		keyInfo = resp
 	} else {
 		addKeyRequest := *garage.NewAddKeyRequest()
-		addKeyRequest.Name = name
+		addKeyRequest.Name.Set(name)
 		resp, _, err := p.client.KeyApi.AddKey(updateContext(ctx, p)).AddKeyRequest(addKeyRequest).Execute()
 		if err != nil {
 			return diag.FromErr(err)
@@ -131,7 +131,7 @@ func resourceKeyCreate(ctx context.Context, d *schema.ResourceData, m interface{
 			Deny:  &deny,
 		}
 
-		_, _, err := p.client.KeyApi.UpdateKey(updateContext(ctx, p), d.Id()).UpdateKeyRequest(updateKeyRequest).Execute()
+		_, _, err := p.client.KeyApi.UpdateKey(updateContext(ctx, p)).UpdateKeyRequest(updateKeyRequest).Execute()
 		if err != nil {
 			return diag.FromErr(err)
 		}
@@ -146,9 +146,7 @@ func resourceKeyRead(ctx context.Context, d *schema.ResourceData, m interface{})
 	p := m.(*garageProvider)
 	var diags diag.Diagnostics
 
-	accessKeyID := d.Id()
-
-	keyInfo, _, err := p.client.KeyApi.GetKey(updateContext(ctx, p), accessKeyID).Execute()
+	keyInfo, _, err := p.client.KeyApi.GetKey(updateContext(ctx, p)).Execute()
 	if err != nil {
 		return diag.FromErr(err)
 	}
@@ -199,7 +197,7 @@ func resourceKeyUpdate(ctx context.Context, d *schema.ResourceData, m interface{
 		Deny:  deny,
 	}
 
-	_, _, err := p.client.KeyApi.UpdateKey(updateContext(ctx, p), d.Id()).UpdateKeyRequest(updateKeyRequest).Execute()
+	_, _, err := p.client.KeyApi.UpdateKey(updateContext(ctx, p)).UpdateKeyRequest(updateKeyRequest).Execute()
 	if err != nil {
 		return diag.FromErr(err)
 	}
@@ -213,9 +211,7 @@ func resourceKeyDelete(ctx context.Context, d *schema.ResourceData, m interface{
 	p := m.(*garageProvider)
 	var diags diag.Diagnostics
 
-	accessKeyID := d.Id()
-
-	_, err := p.client.KeyApi.DeleteKey(updateContext(ctx, p), accessKeyID).Execute()
+	_, err := p.client.KeyApi.DeleteKey(updateContext(ctx, p)).Execute()
 	if err != nil {
 		return diag.FromErr(err)
 	}

@@ -33,6 +33,8 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20221113145120-d012cff7c554 h1:GAQabea9CjkmQIDm4MxbG064enYVL69swewbjRfl5G8=
 git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20221113145120-d012cff7c554/go.mod h1:TlSL6QVxozmdRaSgP6Akspi0HCJv4HAkkq3Dldru4GM=
+git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20231128153612-8b81fae65e5e h1:h89CAh0qmUcGJykss/utXIw+yRGa3Gr6VyrZ5ZWN0kY=
+git.deuxfleurs.fr/garage-sdk/garage-admin-sdk-golang v0.0.0-20231128153612-8b81fae65e5e/go.mod h1:TlSL6QVxozmdRaSgP6Akspi0HCJv4HAkkq3Dldru4GM=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/agext/levenshtein v1.2.2 h1:0S/Yg6LYmFJ5stwQeRp6EeOcCbj7xiqQSdNelsXvaqE=
